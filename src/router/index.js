@@ -1,15 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Auth from '@/middleware/Auth'
+
+import Home from '@/components/Home'
+import Login from '@/components/Login'
+import Dashboard from '@/components/Dashboard'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
+    { path: '/', name: 'Home', component: Home },
+    { path: '/login', name: 'Login', component: Login },
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+      beforeEnter: Auth
     }
   ]
 })
