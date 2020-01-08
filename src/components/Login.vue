@@ -19,9 +19,9 @@ export default {
       try {
         let provider
         switch (event.target.getAttribute('data-provider')) {
-          case 'Google': provider = new firebase.auth.GoogleAuthProvider()
-          case 'Facebook': provider = new firebase.auth.FacebookAuthProvider()
-          case 'Github': provider = new firebase.auth.GithubAuthProvider()
+          case 'Google': provider = new firebase.auth.GoogleAuthProvider(); break
+          case 'Facebook': provider = new firebase.auth.FacebookAuthProvider(); break
+          case 'Github': provider = new firebase.auth.GithubAuthProvider(); break
         }
         provider.setCustomParameters({prompt: 'select_account'})
         let result = await firebase.auth().signInWithPopup(provider)
