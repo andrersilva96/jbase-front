@@ -1,7 +1,7 @@
-import JwtTokenService from '../services/JwtToken'
+import RequestService from '../services/RequestService'
 
 export default function auth(from, to, next) {
-  if (!JwtTokenService.getToken()) {
+  if (!RequestService.getStorage('TOKEN_KEY')) {
     next('/login')
   }
   next()

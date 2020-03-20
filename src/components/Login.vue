@@ -10,7 +10,7 @@
 <script>
 import firebase from 'firebase'
 import axios from 'axios'
-import JwtTokenService from '../services/JwtToken'
+import RequestService from '../services/RequestService'
 
 export default {
   name: 'Login',
@@ -33,9 +33,11 @@ export default {
             'Authorization': await result.user.getIdToken()
           }
         })
-        JwtTokenService.setToken(req.data.token)
+        RequestService.setStorage('TOKEN_KEY', req.data.token)
         this.$router.push('dashboard')
-      } catch (err) {}
+      } catch (err) {
+        console.error(err)
+      }
     }
   }
 }
