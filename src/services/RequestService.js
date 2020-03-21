@@ -14,14 +14,15 @@ class RequestService {
     localStorage.removeItem(key)
   }
 
-  async req(method, endpoint) {
+  async req(method, endpoint, data = null) {
     let req = await axios({
       method: method,
       url: process.env.API_DOMAIN + endpoint,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': this.getStorage('TOKEN_KEY')
-      }
+      },
+      data: data
     })
 
     if (req.status == 401) {
