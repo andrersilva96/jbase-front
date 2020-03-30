@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container">
+  <div id="app">
     <router-view/>
   </div>
 </template>
@@ -12,11 +12,28 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: #350051;
+}
+
+p {
+  color: #fff;
+  font-size: 112.5%;
+  margin-bottom: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #420065;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #220033;
 }
 </style>
