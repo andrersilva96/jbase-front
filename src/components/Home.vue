@@ -4,12 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 offset-md-2">
-            <div class="brand">
-              <h1>JBase</h1>
-              <h5 class="text-uppercase mb-5">
-                A FREE Web Database and API for Developers
-              </h5>
-            </div>
+            <div id="typed" class="brand"></div>
           </div>
         </div>
       </div>
@@ -40,20 +35,57 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: 'Home',
+  mounted() {
+    this.typedWriter()
+  },
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      typed: {
+        element: 'typed',
+        i: 0,
+        pos: 0,
+        texts: [
+          { el: 'h1', txt: '</JBase>' },
+          { el: 'h4', txt: 'A FREE WEB DATABASE AND API FOR DEVELOPERS' }
+        ]
+      }
+    };
+  },
+  methods: {
+    typedWriter() {
+      if (this.typed.pos == this.typed.texts.length) return
+
+      if (this.typed.texts[this.typed.pos].el) {
+          var e = document.createElement(this.typed.texts[this.typed.pos].el)
+          document.getElementById('typed').appendChild(e)
+          this.typed.texts[this.typed.pos].el = null
+          e.classList.add('typewriter')
+      }
+
+      if (this.typed.pos < this.typed.texts.length) {
+          if (this.typed.i < this.typed.texts[this.typed.pos].txt.length) {
+              document.getElementById('typed').lastElementChild.innerHTML += this.typed.texts[this.typed.pos].txt.charAt(this.typed.i)
+              this.typed.i++
+              return setTimeout(this.typedWriter, 100)
+          }
+
+          if (this.typed.pos < (this.typed.texts.length - 1)) {
+            document.getElementById('typed').lastElementChild.classList.remove('typewriter')
+          }
+          this.typed.pos++
+          this.typed.i = 0
+          return setTimeout(this.typedWriter, 100)
+      }
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .fullscreen {
   height: 100vh;
-  /* background-image: url("~@/assets/img/bg2.jpg"); */
   min-height: 300px;
   background-size: cover;
   background-position: center center;
@@ -75,6 +107,26 @@ export default {
   color: #00ED83;
   margin: 40px 0;
 }
+
+/* Typed Start */
+.typewriter {
+    display: inline;
+    border-right: .15em solid #00ED83;
+    animation:
+        typing 4s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: #00ED83
+    }
+}
+/* Typed End */
+
 @media (max-width: 768px) {
   .brand h1 {
     font-size: 2.5em;
