@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
+    <v-footer/>
   </div>
 </template>
 
@@ -11,14 +12,25 @@ export default {
 </script>
 
 <style>
-#app {
+body {
   background-color: #350051;
 }
 
-p {
-  color: #fff;
+.green {
+  color: #00ED83;
+}
+
+p, span, a {
   font-size: 112.5%;
   margin-bottom: 0;
+}
+
+a {
+  font-weight: 600
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 ::-webkit-scrollbar {

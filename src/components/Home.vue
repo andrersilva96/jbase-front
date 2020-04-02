@@ -13,17 +13,17 @@
     <div class="container" id="description">
       <div class="row">
 
-        <div class="col-lg-4 text-center">
+        <div class="col-lg-4 text-white text-center">
             <i class="fas fa-code fa-4x"></i>
             <p>It abstracts much of the Database and API to be able to learn new frontend or development projects.</p>
         </div>
 
-        <div class="col-lg-4 text-center">
+        <div class="col-lg-4 text-white text-center">
           <i class="fas fa-database fa-4x"></i>
           <p>You already have your tables with CRUD to develop your projects for FREE.</p>
         </div>
 
-        <div class="col-lg-4 text-center">
+        <div class="col-lg-4 text-white text-center">
             <i class="fas fa-book fa-4x"></i>
             <p>Documentation that follows good programming practices to encourage good use and easy understanding.</p>
         </div>
