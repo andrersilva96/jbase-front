@@ -1,14 +1,27 @@
 <template>
-  <div>
-    <span>Login</span><br>
-    <a href="#" @click="login($event)" data-provider="Google">Sign in with Google</a><br>
-    <a href="#" @click="login($event)" data-provider="Facebook">Sign in with Facebook</a><br>
-    <a href="#" @click="login($event)" data-provider="Github">Sign in with Github</a><br>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto media">
+        <h2>Login</h2>
+        <button type="button" id="google" @click="login($event)" data-provider="Google">
+          <i class="fab fa-google"></i>
+          Sign in with Google
+        </button>
+        <button type="button" id="fb" @click="login($event)" data-provider="Facebook">
+          <i class="fab fa-facebook-square"></i>
+          Sign in with Facebook
+        </button>
+        <button type="button" id="github" @click="login($event)" data-provider="Github">
+          <i class="fab fa-github"></i>
+          Sign in with Github
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from '../services/FirebaseApp'
 import axios from 'axios'
 import RequestService from '../services/RequestService'
 
@@ -43,6 +56,39 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
+.media {
+  text-align: center;
+  padding: 15vh 0vh;
+  display: grid;
+  width: 300px;
+}
+
+.media h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.media button {
+  border: none;
+  margin: 5px 0;
+  padding: 10px 0;
+  color: #fff;
+}
+
+.media span {
+  padding: 10vh 0;
+}
+
+#google {
+  background-color: #ea4335;
+}
+#fb {
+  background-color: #385499;
+}
+#github {
+  background-color: #2f3337;
+}
 
 </style>
