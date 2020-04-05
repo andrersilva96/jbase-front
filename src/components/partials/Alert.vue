@@ -1,8 +1,8 @@
 <template>
   <div id="alert" v-bind:class="'alert-'+type" class="alert alert-dismissible fade" role="alert">
     <strong>{{type | capitalize}}!</strong> {{msg}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="close" @click="close()">
+      <span>&times;</span>
     </button>
   </div>
 </template>
@@ -25,10 +25,19 @@ export default {
 
       let e = document.getElementById('alert')
       e.classList.add('show')
+      e.style.zIndex = 10
       setTimeout(() => {
         e.classList.remove('show')
+        e.style.zIndex = 0
       }, 3500);
     })
+  },
+  methods: {
+    close() {
+      let e = document.getElementById('alert')
+      e.classList.remove('show')
+      e.style.zIndex = 0
+    }
   }
 }
 </script>
@@ -43,7 +52,7 @@ export default {
   color: #fff;
 
   position: absolute;
-  z-index: 4;
+  z-index: 0;
   right: 4rem;
 }
 .alert-dismissible .close {
@@ -54,7 +63,10 @@ export default {
 .alert-dismissible .close:focus {
   outline: none;
 }
-.alert-success{
+.alert-success {
   background-color: #00c853;
+}
+.alert-danger {
+  background-color: #ff1744;
 }
 </style>

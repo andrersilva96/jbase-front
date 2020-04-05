@@ -55,6 +55,7 @@ export default {
     async getToken() {
       let req = await RequestService.req('GET', '/generateToken')
       this.token = req.token
+      Event.emit('alert', {success: req.success, message: 'Token generated!'})
     },
     copyToken(event) {
       var e = event.target
