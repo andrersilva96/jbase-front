@@ -7,7 +7,15 @@ import Login from '@/components/Login'
 import Dashboard from '@/components/Dashboard'
 import Footer from '@/components/partials/Footer'
 import Navbar from '@/components/partials/Navbar'
+import Alert from '@/components/partials/Alert'
 
+Vue.filter('capitalize', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
+
+Vue.component('alert', Alert)
 Vue.component('navbar', Navbar)
 Vue.component('v-footer', Footer)
 Vue.use(Router)

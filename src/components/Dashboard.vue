@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <alert></alert>
+
     <div class="row">
       <div class="col-12">
         <div class="input-group mb-3">
@@ -18,7 +20,7 @@
             </div>
           </div>
         </form>
-        <ul class="list-group">
+        <ul v-if="tables.length" class="list-group">
           <li class="list-group-item active">Your tables</li>
           <li v-for="(table) in tables" :key="table" class="list-group-item">
             {{ table }}
@@ -34,12 +36,13 @@
 
 <script>
 import RequestService from '../services/RequestService'
+import Event from '@/services/Event'
 
 export default {
   name: 'Dashboard',
   data() {
     return {
-      tables: null,
+      tables: [],
       token: null
     }
   },
@@ -58,7 +61,7 @@ export default {
       e.select()
       e.setSelectionRange(0, 99999)
       document.execCommand('copy')
-      alert('token successfully copied!')
+      Event.emit('alert', {success: true, message: 'Token copied!'})
     },
     async checkForm(e)
     {
@@ -68,7 +71,7 @@ export default {
       if (req.success) {
         this.tables.push(table)
       }
-      alert(req.message)
+      Event.emit('alert', req)
     },
     async removeTable(table) {
       let req = await RequestService.req('DELETE', '/removeTable', { table: table } )
@@ -76,7 +79,7 @@ export default {
         let index = this.tables.indexOf(table)
         if (index > -1) this.tables.splice(index, 1)
       }
-      alert(req.message)
+      Event.emit('alert', req)
     }
   }
 }
