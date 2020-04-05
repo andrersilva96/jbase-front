@@ -22,6 +22,42 @@ body {
   background-color: #350051;
 }
 
+#app {
+  margin-top: 75px;
+}
+
+input[type=text] {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff;
+  border: none;
+}
+
+input[type=text]:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.btn-outline-secondary {
+  font-weight: bold;
+  color: #fff;
+  background-color: #6200ea;
+  border-color: #6200ea;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6200ea;
+  border-color: #6200ea;
+}
+
+::placeholder {
+  color: #fff !important;
+}
+
+.list-group .active {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: none;
+}
+
 .green {
   color: #00ED83;
 }
