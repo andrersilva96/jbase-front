@@ -24,6 +24,7 @@
 import firebase from '../services/FirebaseApp'
 import axios from 'axios'
 import RequestService from '../services/RequestService'
+import Event from '@/services/Event'
 
 export default {
   name: 'Login',
@@ -47,6 +48,7 @@ export default {
           }
         })
         RequestService.setStorage('TOKEN_KEY', req.data.token)
+        Event.emit('token', req.data.token)
         this.$router.push('dashboard')
       } catch (err) {
         console.error(err)

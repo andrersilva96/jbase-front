@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <navbar/>
     <router-view/>
     <v-footer/>
   </div>
@@ -7,7 +8,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      andre: 'sdfsdf'
+    }
+  }
 }
 </script>
 
@@ -20,16 +26,18 @@ body {
   color: #00ED83;
 }
 
-p, span, a {
+p, a {
   font-size: 112.5%;
   margin-bottom: 0;
 }
 
 a {
-  font-weight: 600
+  color: #00ED83;
+  font-weight: 600;
 }
 
 a:hover {
+  color: #54A9FF;
   text-decoration: none;
 }
 
@@ -38,7 +46,7 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: #fff;
+  background: #181A1B;
 }
 
 ::-webkit-scrollbar-thumb {
