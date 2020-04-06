@@ -55,14 +55,7 @@ export default {
   z-index: 0;
   right: 4rem;
 }
-.alert-dismissible .close {
-  padding: inherit;
-  color: inherit;
-}
 
-.alert-dismissible .close:focus {
-  outline: none;
-}
 .alert-success {
   background-color: #00c853;
 }

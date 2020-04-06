@@ -92,7 +92,7 @@ export default {
   position: relative;
 }
 .brand {
-  margin-top: 40vh;
+  margin-top: 25vh;
   color: #00ED83;
   text-align: center;
 }

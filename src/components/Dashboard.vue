@@ -72,6 +72,7 @@ export default {
       if (req.success) {
         this.tables.push(table)
       }
+      document.getElementById('table').value = ''
       Event.emit('alert', req)
     },
     async removeTable(table) {

@@ -44,18 +44,19 @@ input[type=text]:focus {
   border-color: #6200ea;
 }
 
-.btn-outline-secondary:hover {
-  background-color: #6200ea;
-  border-color: #6200ea;
+.btn-outline-secondary:hover, .btn-outline-secondary:focus, .btn-outline-secondary:active {
+  background-color: #6200ea !important;
+  border-color: #6200ea !important;
 }
 
 ::placeholder {
   color: #fff !important;
 }
 
-.list-group .active {
+.list-group .active, .list-group-item {
   background-color: rgba(255, 255, 255, 0.1) !important;
-  border: none;
+  color: #fff;
+  border-color: #350051
 }
 
 .green {
@@ -91,5 +92,14 @@ a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #220033;
+}
+
+.close, close:hover {
+  padding: inherit;
+  color: inherit !important;
+}
+
+.close:focus {
+  outline: none;
 }
 </style>
