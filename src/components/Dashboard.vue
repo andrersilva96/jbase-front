@@ -55,14 +55,17 @@ export default {
     async getToken() {
       let req = await RequestService.req('GET', '/generateToken')
       this.token = req.token
-      Event.emit('alert', {success: req.success, message: 'Token generated!'})
+      return Event.emit('alert', {type: req.success ? 'success' : 'danger', message:  'Token generated!'})
     },
     copyToken(event) {
       var e = event.target
-      e.select()
-      e.setSelectionRange(0, 99999)
-      document.execCommand('copy')
-      Event.emit('alert', {success: true, message: 'Token copied!'})
+      if (e.value.length) {
+        e.select()
+        e.setSelectionRange(0, 99999)
+        document.execCommand('copy')
+        return Event.emit('alert', {type: 'success', message: 'Token copied!'})
+      }
+      return Event.emit('alert', {type: 'warning', message: 'Please generate your token.'})
     },
     async checkForm(e)
     {
@@ -73,7 +76,7 @@ export default {
         this.tables.push(table)
       }
       document.getElementById('table').value = ''
-      Event.emit('alert', req)
+      return Event.emit('alert', {type: req.success ? 'success' : 'danger', message: req.message})
     },
     async removeTable(table) {
       let req = await RequestService.req('DELETE', '/removeTable', { table: table } )
@@ -81,7 +84,7 @@ export default {
         let index = this.tables.indexOf(table)
         if (index > -1) this.tables.splice(index, 1)
       }
-      Event.emit('alert', req)
+      return Event.emit('alert', {type: req.success ? 'success' : 'danger', message: req.message})
     }
   }
 }

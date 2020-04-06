@@ -1,5 +1,5 @@
 <template>
-  <div id="alert" v-bind:class="'alert-'+type" class="alert alert-dismissible fade" role="alert">
+  <div id="alert" class="alert alert-dismissible fade" role="alert">
     <strong>{{type | capitalize}}!</strong> {{msg}}
     <button type="button" class="close" @click="close()">
       <span>&times;</span>
@@ -14,20 +14,23 @@ export default {
   name: 'Alert',
   data() {
     return {
-      type: 'success',
+      type: '',
       msg: ''
     }
   },
   mounted() {
     Event.on('alert', (data) => {
-      this.type = data.success ? 'success': 'danger'
+      this.type = data.type
       this.msg = data.message
 
       let e = document.getElementById('alert')
       e.classList.add('show')
+      e.classList.add(`alert-${data.type}`)
       e.style.zIndex = 10
+
       setTimeout(() => {
         e.classList.remove('show')
+        e.classList.remove(`alert-${data.type}`)
         e.style.zIndex = 0
       }, 3500);
     })
@@ -61,5 +64,14 @@ export default {
 }
 .alert-danger {
   background-color: #ff1744;
+}
+.alert-warning {
+  background-color: #ff9100;
+}
+.alert-info {
+  background-color: #00b0ff;
+}
+.alert-primary {
+  background-color: #6200ea;
 }
 </style>
